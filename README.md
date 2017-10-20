@@ -51,21 +51,21 @@
 - output
 ```
 {
-	"key1": 3,
-	"key2": null,
-	"key3": true,
-	"key4": false,
-	"key5": "aaa",
-	"key6": [
-	5,
-	{
-		"key6_1": "bbb"
-	}
-	],
-	"key7": {
-	"key7_1": 3100.000000,
-	"key7_2": 2
-	}
+  "key1": 3,
+  "key2": null,
+  "key3": true,
+  "key4": false,
+  "key5": "aaa",
+  "key6": [
+    5,
+    {
+      "key6_1": "bbb"
+    }
+  ],
+  "key7": {
+  "key7_1": 3100.000000,
+  "key7_2": 2
+  }
 }
 {"key1":3,"key2":null,"key3":true,"key4":false,"key5":"aaa","key6":[5,{"key6_1":"bbb"}],"key7":{"key7_1":3100.000000,"key7_2":2}}
 ```
