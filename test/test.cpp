@@ -85,7 +85,7 @@ const string gTestInput[] = {
 };
 
 int main(void) {
-    JsonReader reader;
+    JsonReader reader(etUTF8);
 
     for (auto& s : gTestInput) {
         try {
@@ -108,6 +108,7 @@ int main(void) {
     cout << "-------------------" << endl;
 
     ValueObject root;
+
     root.add("key1", ValueNumber(3));
     root.add("key2", ValueNull());
     root.add("key3", ValueTrue());
@@ -115,13 +116,16 @@ int main(void) {
 
     root.add("key5", ValueString("aaa"));
     auto& va1 = root.add("key6", ValueArray());
-    va1.add(ValueNumber(5));
-    auto& vo1 = va1.add(ValueObject());
-    vo1.add("key6_1", ValueString("bbb"));
-
+    {
+        va1.add(ValueNumber(5));
+        auto& vo1 = va1.add(ValueObject());
+        vo1.add("key6_1", ValueString("bbb"));
+    }
     auto& vo2 = root.add("key7", ValueObject());
-    vo2.add("key7_1", ValueNumber(3.1e3));
-    vo2.add("key7_2", ValueNumber(2));
+    {
+        vo2.add("key7_1", ValueNumber(3.1e3));
+        vo2.add("key7_2", ValueNumber(2));
+    }
 
     cout << root.toString() << endl;
     cout << root.toCompactString() << endl;
