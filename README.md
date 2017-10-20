@@ -2,8 +2,7 @@
 <b>youngJSON</b> is very simple JSON parser written by C++.
 
 ## To parse JSON string
-
-`
+```
     using namespace std;
     using namespace youngJSON;
 
@@ -18,30 +17,10 @@
     } catch (invalid_format_error& e) {
         cout << "invalid_format_error exception occurred!" << endl;
     }
-`
+```
 
 ## To generate JSON string
-
-`
-    using namespace std;
-    using namespace youngJSON;
-
-    JsonReader reader(etUTF8);
-
-    try {
-        auto value = reader.read(s);
-        cout << value->toString() << endl;
-        cout << value->toCompactString() << endl;
-    } catch (invalid_argument& e) {
-        cout << "range_error exception occurred!" << endl;
-    } catch (invalid_format_error& e) {
-        cout << "invalid_format_error exception occurred!" << endl;
-    }
-`
-
-## Usage
-
-`
+```
     using namespace std;
     using namespace youngJSON;
 
@@ -67,11 +46,10 @@
 
     cout << root.toString() << endl;
     cout << root.toCompactString() << endl;
-`
+```
 
 - output
-
-`
+```
 	{
 	  "key1": 3,
 	  "key2": null,
@@ -90,4 +68,4 @@
 	  }
 	}
 	{"key1":3,"key2":null,"key3":true,"key4":false,"key5":"aaa","key6":[5,{"key6_1":"bbb"}],"key7":{"key7_1":3100.000000,"key7_2":2}}
-`
+```
