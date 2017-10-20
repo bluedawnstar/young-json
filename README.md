@@ -1,7 +1,7 @@
 # youngJSON
 <b>youngJSON</b> is very simple JSON parser written by C++.
 
-## To parse JSON string
+### To parse JSON string
 ```
     using namespace std;
     using namespace youngJSON;
@@ -19,7 +19,7 @@
     }
 ```
 
-## To generate JSON string
+### To generate JSON string
 ```
     using namespace std;
     using namespace youngJSON;
@@ -50,22 +50,22 @@
 
 - output
 ```
+{
+	"key1": 3,
+	"key2": null,
+	"key3": true,
+	"key4": false,
+	"key5": "aaa",
+	"key6": [
+	5,
 	{
-	  "key1": 3,
-	  "key2": null,
-	  "key3": true,
-	  "key4": false,
-	  "key5": "aaa",
-	  "key6": [
-		5,
-		{
-		  "key6_1": "bbb"
-		}
-	  ],
-	  "key7": {
-		"key7_1": 3100.000000,
-		"key7_2": 2
-	  }
+		"key6_1": "bbb"
 	}
-	{"key1":3,"key2":null,"key3":true,"key4":false,"key5":"aaa","key6":[5,{"key6_1":"bbb"}],"key7":{"key7_1":3100.000000,"key7_2":2}}
+	],
+	"key7": {
+	"key7_1": 3100.000000,
+	"key7_2": 2
+	}
+}
+{"key1":3,"key2":null,"key3":true,"key4":false,"key5":"aaa","key6":[5,{"key6_1":"bbb"}],"key7":{"key7_1":3100.000000,"key7_2":2}}
 ```
