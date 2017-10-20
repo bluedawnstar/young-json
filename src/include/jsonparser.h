@@ -44,7 +44,7 @@ public:
 private:
     void checkOutOfRange() {
         if (p >= pEnd)
-            throw std::range_error("out of range");
+            throw invalid_format_error();
     }
 
     void skipSpace() {
@@ -61,41 +61,40 @@ private:
         std::string res;
 
         skipSpace();
-        if (*p != '\"') {
+        if (*p != '\"')
             throw invalid_format_error();
-        } else {
-            while (*++p != '\"') {
-                if (*p == '\\') {
-                    switch (*++p) {
-                    case 'b': res += '\b'; break;
-                    case 'f': res += '\f'; break;
-                    case 'n': res += '\n'; break;
-                    case 'r': res += '\r'; break;
-                    case 't': res += '\t'; break;
-                    case 'u':
-                    {
-                        unsigned int code = 0;
-                        code += hexToUInt(*++p) << 12;
-                        code += hexToUInt(*++p) << 8;
-                        code += hexToUInt(*++p) << 4;
-                        code += hexToUInt(*++p);
-                        if (encodingType == etUTF8)
-                            appendUTF8(res, code);
-                        else {
-                            res += code >> 8;
-                            res += code & 0xff;
-                        }
-                        break;
+
+        while (*++p != '\"') {
+            if (*p == '\\') {
+                switch (*++p) {
+                case 'b': res += '\b'; break;
+                case 'f': res += '\f'; break;
+                case 'n': res += '\n'; break;
+                case 'r': res += '\r'; break;
+                case 't': res += '\t'; break;
+                case 'u':
+                {
+                    unsigned int code = 0;
+                    code += hexToUInt(*++p) << 12;
+                    code += hexToUInt(*++p) << 8;
+                    code += hexToUInt(*++p) << 4;
+                    code += hexToUInt(*++p);
+                    if (encodingType == etUTF8)
+                        appendUTF8(res, code);
+                    else {
+                        res += code >> 8;
+                        res += code & 0xff;
                     }
-                    default:
-                        res += *p;
-                    }
-                } else {
+                    break;
+                }
+                default:
                     res += *p;
                 }
+            } else {
+                res += *p;
             }
-            ++p;
         }
+        ++p;
 
         return res;
     }
