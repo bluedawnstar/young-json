@@ -391,7 +391,7 @@ struct ValueObject : public JsonValue {
     }
 
     template <typename T>
-    T& add(const std::string& name, T& value) {
+    T& add(const std::string& name, const T& value) {
         auto p = std::make_shared<T>(value);
         mChildren[name] = p;
         return dynamic_cast<T&>(*p);
@@ -487,7 +487,7 @@ struct ValueArray : public JsonValue {
     }
 
     template <typename T>
-    T& add(T& value) {
+    T& add(const T& value) {
         auto p = std::make_shared<T>(value);
         mChildren.push_back(p);
         return dynamic_cast<T&>(*p);
