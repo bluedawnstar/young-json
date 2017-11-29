@@ -24,8 +24,6 @@ public:
 
 class JsonReader {
 public:
-
-public:
     JsonReader(EncodingType type = etUTF8) : encodingType(type) {
         p = pEnd = nullptr;
     }
