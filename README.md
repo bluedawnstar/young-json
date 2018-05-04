@@ -1,5 +1,5 @@
-# youngJSON
-<b>youngJSON</b> is very simple JSON parser written by C++.
+# young-json
+<b>young-json</b> is very simple JSON parser written by C++.
 
 ### To parse JSON string
 ```
