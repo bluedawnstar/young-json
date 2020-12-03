@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <functional>
+#include <vector>
 
 namespace youngJSON {
 
@@ -44,6 +45,10 @@ public:
 
     virtual double toDouble() const {
         return 0.0;
+    }
+
+    virtual std::string toRawString() const {
+        return toStringIndent(0);
     }
 
     virtual std::string toString() const {
@@ -223,6 +228,10 @@ public:
         return std::stod(mValue);
     }
 
+    std::string toRawString() const override {
+        return mValue;
+    }
+
     std::string toStringIndent(int indentation) const override {
         return std::string("\"") + mValue + "\"";
     }
@@ -291,7 +300,7 @@ struct ValueNumber : public JsonValue {
 
     template <typename T>
     void setValue(T value) {
-        mValue = std::to_string(value)
+        mValue = std::to_string(value);
     }
 
 private:
@@ -477,7 +486,7 @@ struct ValueArray : public JsonValue {
     template <typename Function>
     void forEach(Function fn) {
         for (int i = 0; i < (int)mChildren.size(); i++) {
-            fn(i, *mChilren[i]);
+            fn(i, *mChildren[i]);
         }
     }
 
